@@ -1,8 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YE1-R2-e7f">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Rover Detail View Controller-->
+        <scene sceneID="mSy-c4-nNY">
+            <objects>
+                <viewController id="YE1-R2-e7f" customClass="RoverDetailViewController" customModule="Wall_E_NASA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xUl-Ap-ira">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mc3-ou-nyP">
+                                <rect key="frame" x="0.0" y="59" width="393" height="216"/>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xDL-ne-lAE">
+                                <rect key="frame" x="0.0" y="275" width="393" height="543"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roverCell" id="haa-dP-rcs">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="haa-dP-rcs" id="Ve0-Tn-Ehg">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YCI-TI-h8c"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YCI-TI-h8c" firstAttribute="bottom" secondItem="xDL-ne-lAE" secondAttribute="bottom" id="5hD-yZ-lQm"/>
+                            <constraint firstItem="xDL-ne-lAE" firstAttribute="top" secondItem="Mc3-ou-nyP" secondAttribute="bottom" id="GCl-3e-WLA"/>
+                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="VJr-9g-CSz"/>
+                            <constraint firstItem="xDL-ne-lAE" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="bql-UL-vRx"/>
+                            <constraint firstItem="YCI-TI-h8c" firstAttribute="trailing" secondItem="xDL-ne-lAE" secondAttribute="trailing" id="cby-xs-Ppl"/>
+                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="top" secondItem="YCI-TI-h8c" secondAttribute="top" id="gZI-Ls-YDg"/>
+                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="trailing" secondItem="YCI-TI-h8c" secondAttribute="trailing" id="xPC-Tm-RVX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePickerView" destination="Mc3-ou-nyP" id="Qqi-QV-79i"/>
+                        <outlet property="roverTableView" destination="xDL-ne-lAE" id="ds8-pg-zDV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWv-1R-0A5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="336.64122137404581" y="1.4084507042253522"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
