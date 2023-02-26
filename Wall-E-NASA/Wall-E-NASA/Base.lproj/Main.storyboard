@@ -16,11 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mc3-ou-nyP">
-                                <rect key="frame" x="0.0" y="59" width="393" height="216"/>
-                            </pickerView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GnY-iJ-I25">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YE1-R2-e7f" id="7wL-Jg-Fog"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xDL-ne-lAE">
-                                <rect key="frame" x="0.0" y="275" width="393" height="543"/>
+                                <rect key="frame" x="0.0" y="125" width="393" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roverCell" id="haa-dP-rcs">
@@ -38,16 +42,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YCI-TI-h8c" firstAttribute="bottom" secondItem="xDL-ne-lAE" secondAttribute="bottom" id="5hD-yZ-lQm"/>
-                            <constraint firstItem="xDL-ne-lAE" firstAttribute="top" secondItem="Mc3-ou-nyP" secondAttribute="bottom" id="GCl-3e-WLA"/>
-                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="VJr-9g-CSz"/>
+                            <constraint firstItem="xDL-ne-lAE" firstAttribute="trailing" secondItem="YCI-TI-h8c" secondAttribute="trailing" id="G8Y-he-nSy"/>
+                            <constraint firstItem="GnY-iJ-I25" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="JxM-bK-jJ1"/>
+                            <constraint firstItem="xDL-ne-lAE" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="RvH-BW-s1f"/>
+                            <constraint firstItem="GnY-iJ-I25" firstAttribute="trailing" secondItem="YCI-TI-h8c" secondAttribute="trailing" id="SFm-op-atz"/>
                             <constraint firstItem="xDL-ne-lAE" firstAttribute="leading" secondItem="YCI-TI-h8c" secondAttribute="leading" id="bql-UL-vRx"/>
+                            <constraint firstItem="GnY-iJ-I25" firstAttribute="top" secondItem="YCI-TI-h8c" secondAttribute="top" id="c3x-en-Ixk"/>
                             <constraint firstItem="YCI-TI-h8c" firstAttribute="trailing" secondItem="xDL-ne-lAE" secondAttribute="trailing" id="cby-xs-Ppl"/>
-                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="top" secondItem="YCI-TI-h8c" secondAttribute="top" id="gZI-Ls-YDg"/>
-                            <constraint firstItem="Mc3-ou-nyP" firstAttribute="trailing" secondItem="YCI-TI-h8c" secondAttribute="trailing" id="xPC-Tm-RVX"/>
+                            <constraint firstItem="xDL-ne-lAE" firstAttribute="top" secondItem="GnY-iJ-I25" secondAttribute="bottom" constant="10" id="ftZ-wJ-P1K"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePickerView" destination="Mc3-ou-nyP" id="Qqi-QV-79i"/>
+                        <outlet property="dateSearchBar" destination="GnY-iJ-I25" id="Usn-Pw-PIR"/>
                         <outlet property="roverTableView" destination="xDL-ne-lAE" id="ds8-pg-zDV"/>
                     </connections>
                 </viewController>

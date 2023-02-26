@@ -11,29 +11,27 @@ class RoverDetailViewController: UIViewController {
     
     // MARK: - outlets
     
-    @IBOutlet weak var datePickerView: UIPickerView!
+    @IBOutlet weak var dateSearchBar: UISearchBar!
     
     @IBOutlet weak var roverTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePickerView.delegate.self
     }
     
     // MARK: - properties
     var rover: Rover?
-
-
+    
+    
 }
 
 func updateUI() {
 }
 
-extension RoverDetailViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let rover = rover else {return nil}
-        return rover.earthDay
-    }
+extension RoverDetailViewController: UISearchBarDelegate {
+    
 }
+
+
 
 extension RoverDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
