@@ -36,7 +36,7 @@ extension RoverDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         guard let searchDate = searchBar.text, !searchDate.isEmpty else { return }
-        RoverModel.fetchRover(searchDate: searchDate) { rovers in
+        RoverController.fetchRover(searchDate: searchDate) { rovers in
             guard let rover = rovers else { return }
             self.rovers = rover
             DispatchQueue.main.async {

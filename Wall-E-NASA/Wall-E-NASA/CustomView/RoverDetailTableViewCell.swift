@@ -17,7 +17,7 @@ class RoverDetailTableViewCell: UITableViewCell {
 
     func fetchImage(rover: Rover) {
         
-        RoverModel.fetchRoverImage(searchDate: rover.earthDay, forRover: rover) { image in
+        RoverController.fetchRoverImage(forRover: rover) { image in
             DispatchQueue.main.async {
                 self.roverImageView.image = image
                 if image == nil {

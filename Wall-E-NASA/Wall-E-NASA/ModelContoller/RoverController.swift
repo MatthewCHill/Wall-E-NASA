@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoverModel {
+class RoverController {
     
     // MARK: - Functions
     
@@ -51,16 +51,12 @@ class RoverModel {
         } .resume()
     }
     
-    static func fetchRoverImage(searchDate: String, forRover: Rover, completion: @escaping (UIImage?) -> Void) {
-        guard let baseURL = URL(string: Constants.NasaURL.baseURL) else {completion(nil); return}
-        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        urlComponents?.path.append(contentsOf: Constants.NasaURL.roverPath)
-        let queryPath = URLQueryItem(name: Constants.QueryComponents.firstQueryKey, value: searchDate)
-        let apiQueryKey = URLQueryItem(name: Constants.QueryComponents.apiQueryKey, value: Constants.QueryComponents.apiQueryValue)
-        urlComponents?.queryItems = [queryPath,apiQueryKey]
-        guard let finalURL = urlComponents?.url else {completion(nil); return}
+    static func fetchRoverImage(forRover: Rover, completion: @escaping (UIImage?) -> Void) {
+        guard let finalURL = URL(string: forRover.roverImage) else {completion(nil); return}
         print(finalURL)
+        
         URLSession.shared.dataTask(with: finalURL) { data, _, error in
+            
         
             if let error = error {
                 print(error.localizedDescription)
