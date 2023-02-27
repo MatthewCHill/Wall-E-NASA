@@ -56,8 +56,6 @@ extension RoverDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let rover = rovers[indexPath.row] else { return UITableViewCell()}
         cell.updateViews(rover: rover)
-        tableView.reloadData()
-
         return cell
     }
     
