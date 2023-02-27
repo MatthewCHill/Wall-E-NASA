@@ -5,20 +5,20 @@
 //  Created by Matthew Hill on 2/23/23.
 //
 
-import Foundation
+import UIKit
 
 class RoverModel {
     
     // MARK: - Functions
     
-    static func fetchRover(completion: @escaping (Rover?) -> Void) {
+    static func fetchRover(searchDate: String, completion: @escaping (Rover?) -> Void) {
         //https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=1NJ993LrgzwCykkBLqsaIeKbx51taDqemi4s72jE
         // Construct the URL
         
         guard let baseURL = URL(string: Constants.NasaURL.baseURL) else {completion(nil); return}
         var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         urlComponents?.path.append(contentsOf: Constants.NasaURL.roverPath)
-        let queryPath = URLQueryItem(name: Constants.QueryComponents.firstQueryKey, value: Constants.QueryComponents.firstQueryValue)
+        let queryPath = URLQueryItem(name: Constants.QueryComponents.firstQueryKey, value: searchDate)
         let apiQueryKey = URLQueryItem(name: Constants.QueryComponents.apiQueryKey, value: Constants.QueryComponents.apiQueryValue)
         urlComponents?.queryItems = [queryPath,apiQueryKey]
         
@@ -47,6 +47,22 @@ class RoverModel {
                 completion(nil)
                 return
             }
+        } .resume()
+    }
+    
+    static func fetchRoverImage(forRover: Rover, completion: @escaping (UIImage?) -> Void) {
+        guard let finalURL = URL(string: forRover.roverImage) else {completion(nil) ; return}
+        URLSession.shared.dataTask(with: finalURL) { data, _, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            guard let data = data else { completion(nil); return }
+            
+            let roverImage = UIImage(data: data)
+            completion(roverImage)
         } .resume()
     }
     

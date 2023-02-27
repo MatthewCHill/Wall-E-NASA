@@ -8,7 +8,7 @@
 import Foundation
 
 struct Constants {
-    // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=1NJ993LrgzwCykkBLqsaIeKbx51taDqemi4s72jE
+    // https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=1NJ993LrgzwCykkBLqsaIeKbx51taDqemi4s72jE
     
     struct NasaURL {
         
@@ -18,8 +18,7 @@ struct Constants {
     
     struct QueryComponents {
         
-        static let firstQueryKey = "sol"
-        static let firstQueryValue = "1000"
+        static let firstQueryKey = "earth_date"
         static let apiQueryKey = "api_key"
         static let apiQueryValue = "1NJ993LrgzwCykkBLqsaIeKbx51taDqemi4s72jE"
     }

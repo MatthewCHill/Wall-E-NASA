@@ -10,7 +10,7 @@ import Foundation
 class Rover {
     
     let earthDay: String
-    let camerName: String
+    let cameraName: String
     let roverImage: String
     
     enum Keys: String {
@@ -27,6 +27,6 @@ class Rover {
               let camerName = cameraDict[Keys.cameraName.rawValue] as? String else {return nil}
         self.earthDay = earthDay
         self.roverImage = roverImage
-        self.camerName = camerName
+        self.cameraName = camerName
     }
 }

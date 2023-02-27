@@ -23,17 +23,52 @@
                                     <outlet property="delegate" destination="YE1-R2-e7f" id="7wL-Jg-Fog"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xDL-ne-lAE">
-                                <rect key="frame" x="0.0" y="125" width="393" height="693"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xDL-ne-lAE">
+                                <rect key="frame" x="0.0" y="115" width="393" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="XdD-pi-i2r">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="Curiosity"/>
+                                        <segment title="Opportunity"/>
+                                        <segment title="Spirit"/>
+                                    </segments>
+                                </segmentedControl>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roverCell" id="haa-dP-rcs">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="roverCell" rowHeight="100" id="haa-dP-rcs" customClass="RoverDetailTableViewCell" customModule="Wall_E_NASA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="82" width="393" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="haa-dP-rcs" id="Ve0-Tn-Ehg">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nFu-Og-zJd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ps8-ha-oYv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Camera)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-df-U1R">
+                                                            <rect key="frame" x="255" y="40" width="138" height="20.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nFu-Og-zJd" firstAttribute="top" secondItem="Ve0-Tn-Ehg" secondAttribute="top" id="GsM-W5-Elr"/>
+                                                <constraint firstItem="nFu-Og-zJd" firstAttribute="leading" secondItem="Ve0-Tn-Ehg" secondAttribute="leading" id="HMi-JJ-7Uf"/>
+                                                <constraint firstAttribute="trailing" secondItem="nFu-Og-zJd" secondAttribute="trailing" id="WBd-Az-Ewu"/>
+                                                <constraint firstAttribute="bottom" secondItem="nFu-Og-zJd" secondAttribute="bottom" id="fqD-Ky-m8m"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cameraNameLabel" destination="w4X-df-U1R" id="ILt-4R-mpd"/>
+                                            <outlet property="roverImageView" destination="Ps8-ha-oYv" id="nUq-g0-48C"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -54,12 +89,13 @@
                     </view>
                     <connections>
                         <outlet property="dateSearchBar" destination="GnY-iJ-I25" id="Usn-Pw-PIR"/>
+                        <outlet property="roverInformationTableView" destination="xDL-ne-lAE" id="624-5L-iiz"/>
                         <outlet property="roverTableView" destination="xDL-ne-lAE" id="ds8-pg-zDV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWv-1R-0A5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336.64122137404581" y="1.4084507042253522"/>
+            <point key="canvasLocation" x="-266" y="7"/>
         </scene>
     </scenes>
     <resources>
