@@ -14,11 +14,21 @@ class RoverDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var roverImageView: UIImageView!
     @IBOutlet weak var cameraNameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+
+    func fetchImage(rover: Rover) {
+        
+        RoverModel.fetchRoverImage(searchDate: rover.earthDay, forRover: rover) { image in
+            DispatchQueue.main.async {
+                self.roverImageView.image = image
+                if image == nil {
+                    self.roverImageView.image = UIImage(systemName: "trash.fill")
+                }
+            }
+        }
     }
-
-
     
-    
+    func updateViews(rover: Rover) {
+        cameraNameLabel.text = rover.cameraName
+        fetchImage(rover: rover)
+    }
 }

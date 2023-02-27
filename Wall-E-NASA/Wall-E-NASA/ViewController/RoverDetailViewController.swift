@@ -25,12 +25,9 @@ class RoverDetailViewController: UIViewController {
     }
     
     // MARK: - properties
-    var rovers: Rover?
+    var rover: Rover?
+    var rovers: [Rover?] = []
     
-    
-}
-
-func updateUI() {
     
 }
 
@@ -39,8 +36,8 @@ extension RoverDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         guard let searchDate = searchBar.text, !searchDate.isEmpty else { return }
-        RoverModel.fetchRover(searchDate: searchDate) { rover in
-            guard let rover = rover else { return }
+        RoverModel.fetchRover(searchDate: searchDate) { rovers in
+            guard let rover = rovers else { return }
             self.rovers = rover
             DispatchQueue.main.async {
                 self.roverTableView.reloadData()
@@ -49,21 +46,18 @@ extension RoverDetailViewController: UISearchBarDelegate {
     }
 }
 
-
-
 extension RoverDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let rover = rovers else {return 0}
-        return rover.cameraName.count
+        return rovers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "roverCell", for: indexPath) as? RoverDetailTableViewCell else { return UITableViewCell()}
         
-        var config = cell.defaultContentConfiguration()
-        config.text = rovers?.cameraName
-        cell.contentConfiguration = config
+        guard let rover = rovers[indexPath.row] else { return UITableViewCell()}
+        cell.updateViews(rover: rover)
+        tableView.reloadData()
+
         return cell
     }
     
